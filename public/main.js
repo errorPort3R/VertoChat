@@ -1,16 +1,23 @@
 var socket;
 
 function start() {
-    var ws = new SockJS("/chat")
+    var ws = new SockJS("/socket")
     socket = Stomp.over(ws)
 
     socket.connect({}, onSocketConnected)
 }
 
 function onSocketConnected() {
-    socket.subscribe("/topic/chat", sendMessage)
+    socket.subscribe("/chat", onReceiveMessage)
+}
+
+function onReceiveMessage() {
+
 }
 
 function sendMessage() {
-    socket.send("/app/chat", {}, $('#msg').val());
+    var s = JSON.stringify({message: $('#msg').val()});
+    socket.send("/topic/chat", {}, s);
 }
+
+start();
