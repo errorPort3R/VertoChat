@@ -13,7 +13,7 @@ function onSocketConnected() {
 
 function onReceiveMessage(mess) {
     data = JSON.parse(mess.body);
-    $('#divlist').append(data.time + " - " + data.msg +  "<br />" + "<br />");
+    $('#divlist').append("<div id='divlabel'>" + data.user + "<br />" + data.time + "</div>   <div id='divmsg'>" + data.msg +  "</div><br />");
     if (mess === undefined)
     {
         return;
@@ -21,12 +21,12 @@ function onReceiveMessage(mess) {
 }
 
 function sendMessage() {
-    var t = timeNow(t);
-    var s = JSON.stringify({msg: $('#msg').val(), time: t});
+    var t = timeNow();
+    var s = JSON.stringify({msg: $('#msg').val(), time: t, user: "Mike"});
     socket.send("/topic/chat", {}, s);
 }
 
-function timeNow(i) {
+function timeNow() {
   var d = new Date(),
       h = d.getHours(),
       m = d.getMinutes();

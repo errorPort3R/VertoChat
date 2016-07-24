@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>VS1Chat</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.0.3/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
@@ -14,7 +15,7 @@ VS Chat 1
 
 
 <input type="text" id="msg" placeholder="Type your message"/>
-<button type="submit" onclick="sendMessage()">Send message</button>
+<button type="submit" onclick="sendMessage()" autofocus>Send message</button>
 <div id="divlist"></div>
 
 <script src="main.js"></script>
