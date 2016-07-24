@@ -28,9 +28,11 @@ function sendMessage() {
 
 function timeNow() {
   var d = new Date(),
+      mo = d.getMonth();
+      day = d.getDate();
       h = d.getHours(),
-      m = d.getMinutes();
-  return h + ':' + m;
+      m = (d.getMinutes()<10?'0':'') + d.getMinutes();
+  return mo + '/' + day + '-' + h + ':' + m;
 }
 
 start();

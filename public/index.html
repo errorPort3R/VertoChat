@@ -12,10 +12,17 @@
 <body>
 VS Chat 1
 <br><br>
+{{^username}}
+<div id="login">
+    <input type="text" id="username" placeholder="Username"/>
+    <input type="text" id="password" placeholder="Password"/>
+    <input type="button" onclick="login" method="post" value="Login"/>
+</div>
+{{/username}}
 
-
+<br/>
 <input type="text" id="msg" placeholder="Type your message"/>
-<button type="submit" onclick="sendMessage()" autofocus>Send message</button>
+<input type="button" onclick="sendMessage()" value="Send"/>
 <div id="divlist"></div>
 
 <script src="main.js"></script>
