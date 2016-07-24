@@ -19,9 +19,4 @@ public class VSChat1Config extends AbstractWebSocketMessageBrokerConfigurer{
         registry.addEndpoint("/socket").withSockJS();
     }
 
-//    @Override
-//    public void configureMessageBroker(MessageBrokerRegistry registry) {
-//        registry.setApplicationDestinationPrefixes("/app");
-//        registry.enableSimpleBroker("/topic", "/queue");
-//    }
 }
