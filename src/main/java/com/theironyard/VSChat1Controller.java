@@ -32,10 +32,6 @@ import java.util.HashMap;
 public class VSChat1Controller
 {
 
-    @Autowired
-    UserRepository users;
-
-
     static SimpMessagingTemplate messenger;
 
     @Autowired
@@ -46,28 +42,14 @@ public class VSChat1Controller
 
     @MessageMapping("/topic/chat")
     @SendTo("/chat")
-    public Message sendMessage(HttpSession session, Message msg)
+    public Message sendMessage(Message msg)
     {
-        String username = (String)session.getAttribute("username");
-        User user = users.findByUsername(username);
+        //String username = (String)session.getAttribute("username");
+        //User user = users.findByUsername(username);
         //Message mess = new Message(new String((byte[]) msg.getPayload()));
         //messages.save(mess);
+
+        System.out.println(new String((byte[]) msg.getPayload()));
         return msg;
-    }
-
-    @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String login(HttpSession session, Model model, @RequestParam String username, @RequestParam String password) throws Exception {
-
-        User user = users.findByUsername(username);
-        if (user == null) {
-            user = new User(username, password);
-            users.save(user);
-        }
-        else if (!password.equals(user.getPassword())) {
-            throw new Exception("Wrong password");
-        }
-        session.setAttribute("username", username);
-        model.addAttribute("username", username);
-        return "";
     }
 }
